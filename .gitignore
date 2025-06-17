@@ -1,7 +1,2 @@
 .env
-__pycache__
-.claude
-.venv
 venv
-logs
-config/__pycache__

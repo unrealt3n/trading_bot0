@@ -1,0 +1,150 @@
+# Order Flow Bot Setup Guide
+
+## Requirements File (requirements.txt)
+```
+aiohttp==3.8.5
+websockets==11.0.3
+numpy==1.24.3
+pandas==2.0.3
+python-dotenv==1.0.0
+```
+
+## Quick Start Guide
+
+### 1. Get Binance Testnet API Keys
+1. Go to https://testnet.binancefuture.com/
+2. Register/login with your GitHub account
+3. Go to API Management
+4. Create new API key and save both key and secret
+
+### 2. Install Dependencies
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate it
+# On Windows:
+venv\Scripts\activate
+# On Linux/Mac:
+source venv/bin/activate
+
+# Install requirements
+pip install -r requirements.txt
+```
+
+### 3. Configure the Bot
+Edit the bot file and update these lines:
+```python
+API_KEY: str = "YOUR_TESTNET_API_KEY"
+API_SECRET: str = "YOUR_TESTNET_API_SECRET"
+```
+
+### 4. Run the Bot
+```bash
+python orderflow_bot.py
+```
+
+## Deployment Options
+
+### Option A: Railway.app (Recommended)
+1. Push code to GitHub
+2. Connect GitHub to Railway
+3. Add environment variables in Railway dashboard
+4. Deploy (auto-scales, good latency)
+
+### Option B: Local PC
+- Good for testing
+- Use tmux/screen for persistent sessions
+- Consider network stability
+
+### Option C: VPS (DigitalOcean/Vultr)
+- $5-10/month
+- Better latency than home PC
+- Full control
+
+## Performance Optimization
+
+### 1. Reduce Symbols Initially
+Start with just 2-3 symbols:
+```python
+SYMBOLS: List[str] = ["BTCUSDT", "ETHUSDT"]
+```
+
+### 2. Adjust Parameters Based on Results
+- If low fill rate: Increase `IMBALANCE_THRESHOLD` to 2.5
+- If too many false signals: Increase `VOLUME_SPIKE_MIN`
+- If stops hit often: Widen `STOP_LOSS_PCT` to 0.7%
+
+### 3. Best Trading Hours
+- US Market Open: 9:30 AM - 11:00 AM EST
+- European Open: 3:00 AM - 5:00 AM EST
+- Asian Session: 7:00 PM - 9:00 PM EST
+
+## Safety Checklist
+
+✅ **Before Going Live:**
+1. Test on testnet for at least 1 week
+2. Verify all risk limits work (max loss stops bot)
+3. Start with $20 positions, not $30
+4. Keep detailed logs of all trades
+5. Have manual kill switch ready
+
+## Common Issues & Solutions
+
+### WebSocket Disconnections
+- Bot auto-reconnects
+- Check internet stability
+- Consider using Ethernet vs WiFi
+
+### Orders Not Filling
+- Market moved away too fast
+- Solution: Use slightly more aggressive pricing
+- Or increase `ORDER_TIMEOUT_SEC`
+
+### High Loss Days
+- Normal part of trading
+- Check if specific hours are unprofitable
+- May need to adjust `IMBALANCE_THRESHOLD`
+
+## Monitoring Commands
+
+### View Logs in Real-time
+```bash
+tail -f bot.log
+```
+
+### Check Performance
+The bot prints metrics every 5 minutes automatically
+
+### Emergency Stop
+Press Ctrl+C (bot will close all positions)
+
+## Expected Results
+
+**Week 1-2**: Learning phase, expect breakeven
+**Week 3-4**: Refinement, small profits ($2-5/day)
+**Month 2+**: Consistent $5-10/day possible
+
+**Monthly expectations:**
+- 20 trading days
+- $5 average/day = $100/month
+- ~160% return on $60 capital
+- Account for 20% losing days
+
+## Next Steps After Testing
+
+1. **Graduate to Live Account**
+   - Start with same $60 capital
+   - Use Binance VIP0 tier (0.02% maker fee)
+
+2. **Scale Gradually**
+   - Increase to $50/trade after 1 profitable month
+   - Add more symbols (up to 10)
+   - Consider multiple strategies
+
+3. **Advanced Improvements**
+   - Add machine learning for signal filtering
+   - Implement correlation analysis
+   - Create web dashboard for monitoring
+
+Remember: This is a high-risk strategy. Never trade money you can't afford to lose.
