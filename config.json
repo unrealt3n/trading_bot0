@@ -1,0 +1,47 @@
+{
+  "trading": {
+    "mode": "demo",
+    "trade_amount": 20,
+    "leverage": 1,
+    "take_profit_percent": 2.0,
+    "stop_loss_percent": 1.0,
+    "min_confidence_threshold": 65.0,
+    "max_concurrent_trades": 3
+  },
+  "exchanges": {
+    "demo": {
+      "name": "binance_testnet",
+      "api_key": "",
+      "api_secret": "",
+      "base_url": "https://testnet.binance.vision"
+    },
+    "live": {
+      "name": "binance",
+      "api_key": "",
+      "api_secret": "",
+      "base_url": "https://api.binance.com"
+    }
+  },
+  "analysis": {
+    "supported_coins": [
+      "BTC",
+      "ETH",
+      "SOL",
+      "XRP",
+      "BNB"
+    ],
+    "analysis_interval_seconds": 300,
+    "enable_continuous_mode": false
+  },
+  "optional_apis": {
+    "enable_gemini_analysis": false,
+    "enable_news_analysis": true,
+    "enable_smart_money_detection": true
+  },
+  "risk_management": {
+    "max_daily_trades": 10,
+    "max_daily_loss_percent": 5.0,
+    "position_size_percent": 2.0,
+    "required_signal_strength": "high"
+  }
+}

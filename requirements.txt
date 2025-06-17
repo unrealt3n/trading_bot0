@@ -1,0 +1,52 @@
+# 🚀 Enhanced Crypto Trading Bot Requirements
+# Core async HTTP and utilities
+aiohttp>=3.9.0
+aiofiles>=23.2.0
+
+# Data processing and analysis (required for smart money detection)
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.11.0
+
+# Networking and HTTP
+requests>=2.31.0
+urllib3>=2.0.0
+
+# Data validation and parsing
+pydantic>=2.0.0
+python-dateutil>=2.8.2
+
+# Logging and monitoring
+structlog>=23.1.0
+
+# Cryptographic functions for API authentication
+cryptography>=41.0.0
+pycryptodome>=3.18.0
+
+# JSON and data serialization
+orjson>=3.9.0
+
+# Additional dependencies for enhanced features
+scikit-learn>=1.3.0  # For advanced statistical analysis in smart money detection
+matplotlib>=3.7.0    # For potential visualization features
+seaborn>=0.12.0     # For enhanced data visualization
+
+# Development and testing (optional)
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+black>=23.7.0
+isort>=5.12.0
+
+# System compatibility
+typing-extensions>=4.7.0
+
+# Optional: For enhanced performance
+uvloop>=0.17.0; platform_system != "Windows"
+
+# Note: asyncio-timeout is included in Python 3.11+ standard library
+
+# Google Gemini AI for result confirmation and analysis
+google-generativeai>=0.3.0
+
+# CryptoPanic API for real news sentiment
+# No additional package needed - uses requests

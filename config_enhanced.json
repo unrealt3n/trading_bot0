@@ -1,0 +1,142 @@
+{
+  "trading": {
+    "mode": "demo",
+    "trade_amount": 20,
+    "leverage": 1,
+    "take_profit_percent": 2.0,
+    "stop_loss_percent": 1.0,
+    "min_confidence_threshold": 65.0,
+    "max_concurrent_trades": 3
+  },
+  "exchanges": {
+    "demo": {
+      "name": "binance_testnet",
+      "api_key": "",
+      "api_secret": "",
+      "base_url": "https://testnet.binance.vision"
+    },
+    "live": {
+      "name": "binance",
+      "api_key": "",
+      "api_secret": "",
+      "base_url": "https://api.binance.com"
+    }
+  },
+  "analysis": {
+    "supported_coins": [
+      "BTC",
+      "ETH",
+      "SOL",
+      "XRP",
+      "BNB",
+      "ADA",
+      "AVAX",
+      "DOT",
+      "MATIC",
+      "LINK"
+    ],
+    "analysis_interval_seconds": 300,
+    "enable_continuous_mode": true,
+    "max_concurrent_analysis": 3
+  },
+  "enhanced": {
+    "whale_alert_api_key": "",
+    "enable_whale_tracking": true,
+    "enable_liquidation_tracking": true,
+    "enable_retail_detection": true,
+    "enable_historical_correlation": true,
+    "min_whale_threshold_usd": 100000,
+    "liquidation_lookback_minutes": 60,
+    "retail_divergence_threshold": 0.5,
+    "confidence_boost_enabled": true,
+    "dynamic_weights_enabled": true
+  },
+  "trade_durations": {
+    "scalp": {
+      "max_duration_minutes": 15,
+      "min_whale_signal_strength": 70,
+      "min_liquidation_signal_strength": 60,
+      "required_signals": ["whale_alerts", "liquidations"]
+    },
+    "short": {
+      "max_duration_hours": 8,
+      "min_confidence": 70,
+      "preferred_signals": ["smart_money", "technical", "retail_divergence"]
+    },
+    "mid": {
+      "max_duration_days": 7,
+      "min_confidence": 60,
+      "preferred_signals": ["news", "institutional_flow", "historical_patterns"]
+    }
+  },
+  "signal_weights": {
+    "whale_alerts": 0.20,
+    "liquidations": 0.18,
+    "retail_vs_bigmoney": 0.15,
+    "smart_money": 0.12,
+    "technical_analysis": 0.10,
+    "news_sentiment": 0.08,
+    "options_flow": 0.07,
+    "orderbook": 0.05,
+    "session_analysis": 0.03,
+    "multi_exchange": 0.02
+  },
+  "confidence_adjustments": {
+    "support_resistance_weight": 0.30,
+    "market_structure_weight": 0.25,
+    "volatility_weight": 0.20,
+    "session_context_weight": 0.15,
+    "volume_profile_weight": 0.10
+  },
+  "optional_apis": {
+    "crypto_panic_token": "",
+    "whale_alert_api_key": "",
+    "enable_news_analysis": true,
+    "enable_smart_money_detection": true,
+    "enable_crypto_panic": true,
+    "coinglass_premium": false,
+    "whale_alert_premium": false
+  },
+  "risk_management": {
+    "max_daily_trades": 15,
+    "max_daily_loss_percent": 5.0,
+    "position_size_percent": 2.0,
+    "required_signal_strength": "medium",
+    "dynamic_position_sizing": true,
+    "risk_reward_ratio": 2.0
+  },
+  "termux_optimizations": {
+    "enable_memory_optimization": true,
+    "max_cache_size_mb": 50,
+    "reduce_logging_verbosity": false,
+    "use_simple_ui_fallback": false,
+    "optimize_network_requests": true
+  },
+  "notifications": {
+    "enable_trade_notifications": true,
+    "enable_whale_alerts": true,
+    "enable_liquidation_alerts": true,
+    "enable_profit_loss_alerts": true,
+    "notification_channels": ["terminal", "file"]
+  },
+  "data_sources": {
+    "free_sources_only": true,
+    "primary_exchanges": ["binance", "coinbase", "kraken"],
+    "liquidation_sources": ["coinglass", "bybt", "liquidations_xyz"],
+    "whale_sources": ["whale_alert", "clankapp", "blockchain_explorers"],
+    "news_sources": ["cryptonews", "coindesk", "reddit"]
+  },
+  "performance": {
+    "enable_performance_monitoring": true,
+    "log_execution_times": true,
+    "enable_profiling": false,
+    "memory_threshold_mb": 500,
+    "auto_restart_on_memory_limit": true
+  },
+  "backup_and_recovery": {
+    "auto_backup_trades": true,
+    "backup_interval_hours": 6,
+    "max_backup_files": 10,
+    "backup_location": "logs/backups/"
+  }
+}
